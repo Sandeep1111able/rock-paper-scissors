@@ -33,21 +33,21 @@ const playRound = function (playerSelection, computerSelection) {
   }
 };
 
-const game = function () {
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Please choose your weapon");
-    computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-  }
-  if (playerCount > computerCount) {
-    console.log(
-      `You are the winner, you won ${playerCount} rounds and computer won ${computerCount} rounds out of 5 rounds`
-    );
-  } else {
-    console.log(
-      `You are the loser, you won ${playerCount} rounds and computer won ${computerCount} rounds out of 5 rounds`
-    );
-  }
-};
+// const game = function () {
+//   for (let i = 0; i < 5; i++) {
+//     let playerSelection = prompt("Please choose your weapon");
+//     computerSelection = getComputerChoice();
+//     playRound(playerSelection, computerSelection);
+//   }
+//   if (playerCount > computerCount) {
+//     console.log(
+//       `You are the winner, you won ${playerCount} rounds and computer won ${computerCount} rounds out of 5 rounds`
+//     );
+//   } else {
+//     console.log(
+//       `You are the loser, you won ${playerCount} rounds and computer won ${computerCount} rounds out of 5 rounds`
+//     );
+//   }
+// };
 
-game();
+// game();

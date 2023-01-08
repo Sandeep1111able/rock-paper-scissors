@@ -48,3 +48,14 @@ h2 {
   font-size: 36px;
   visibility: hidden;
 }
+
+.reset-container {
+  display: flex;
+  justify-content: center;
+}
+
+#reset {
+  font-size: 30px;
+  padding: 25px 45px;
+  visibility: hidden;
+}

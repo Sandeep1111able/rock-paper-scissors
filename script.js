@@ -1,3 +1,10 @@
+const buttons = document.querySelectorAll("button");
+const playerChoice = document.querySelector(".player-choice");
+const computerChoice = document.querySelector(".computer-choice");
+const playerRound = document.querySelector(".player-round");
+const computerRound = document.querySelector(".computer-round");
+const winnerText = document.querySelector("h2");
+
 const getComputerChoice = function () {
   computerOptions = ["rock", "paper", "scissors"];
   return computerOptions[Math.floor(Math.random() * 3)];
@@ -13,41 +20,31 @@ const playRound = function (playerSelection, computerSelection) {
     (playerSelection == "scissors" && computerSelection == "paper") ||
     (playerSelection == "rock" && computerSelection == "scissors")
   ) {
-    console.log(
-      `You Won this round! ${playerSelection} beats ${computerSelection}`
-    );
-    return playerCount++;
+    playerRound.textContent = `Round Won:${++playerCount}`;
+    console.log(playerCount);
   } else if (
     (computerSelection == "paper" && playerSelection == "rock") ||
     (computerSelection == "scissors" && playerSelection == "paper") ||
     (computerSelection == "rock" && playerSelection == "scissors")
   ) {
-    console.log(
-      `You Lose this round! ${computerSelection} beats ${playerSelection}`
-    );
-    return computerCount++;
-  } else {
-    console.log(
-      `You drew this round! ${computerSelection} draws ${playerSelection}`
-    );
+    computerRound.textContent = `Round Won:${++computerCount}`;
+    console.log(computerCount);
   }
 };
 
-// const game = function () {
-//   for (let i = 0; i < 5; i++) {
-//     let playerSelection = prompt("Please choose your weapon");
-//     computerSelection = getComputerChoice();
-//     playRound(playerSelection, computerSelection);
-//   }
-//   if (playerCount > computerCount) {
-//     console.log(
-//       `You are the winner, you won ${playerCount} rounds and computer won ${computerCount} rounds out of 5 rounds`
-//     );
-//   } else {
-//     console.log(
-//       `You are the loser, you won ${playerCount} rounds and computer won ${computerCount} rounds out of 5 rounds`
-//     );
-//   }
-// };
-
-// game();
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const playerSelect = button.id;
+    const computerSelect = getComputerChoice();
+    playerChoice.textContent = playerSelect.toUpperCase();
+    computerChoice.textContent = computerSelect.toUpperCase();
+    playRound(playerSelect, computerSelect);
+    if (playerCount === 5) {
+      winnerText.textContent = "You are the Winner";
+      winnerText.style.visibility = "visible";
+    } else if (computerCount === 5) {
+      winnerText.textContent = "You are the Loser";
+      winnerText.style.visibility = "visible";
+    }
+  });
+});
